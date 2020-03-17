@@ -1,12 +1,14 @@
 // Requiring bcrypt for password hashing. Using the bcryptjs version as the regular bcrypt module sometimes causes errors on Windows machines
 var bcrypt = require("bcryptjs");
-// Creating our User model
+// Creating an Admin model
+// unique user with approval priviledges
 module.exports = function(sequelize, DataTypes) {
-  const User = sequelize.define("User", {
+  const Admin = sequelize.define("Admin", {
     // The email cannot be null, and must be a proper email before creation
     name:{
       type: DataTypes.STRING,
       allowNull: false,
+      unique: true,
       validate: {
           notEmpty: true
       }
@@ -31,44 +33,37 @@ module.exports = function(sequelize, DataTypes) {
           }
     },
     
-    interest: {
-        type: DataTypes.STRING,
-        default: "Sports"
-
-    }
     }
 
 });
 
 
-  // Creating a custom method for our User model. This will check if an unhashed password entered by the user can be compared to the hashed password stored in our database
-  User.prototype.validPassword = function(password) {
+  // Creating a custom method for our Admin model. This will check if an unhashed password entered by the Admin can be compared to the hashed password stored in our database
+  Admin.prototype.validPassword = function(password) {
     return bcrypt.compareSync(password, this.password);
   };
-  // Hooks are automatic methods that run during various phases of the User Model lifecycle
-  // In this case, before a User is created, we will automatically hash their password
-  User.addHook("beforeCreate", function(user) {
-    user.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(10), null);
+  // Hooks are automatic methods that run during various phases of the admin Model lifecycle
+  // In this case, before a Admin is created, we will automatically hash their password
+  Admin.addHook("beforeCreate", function(Admin) {
+    Admin.password = bcrypt.hashSync(Admin.password, bcrypt.genSaltSync(10), null);
   });
 
-  // associate a user with several events
-  User.associate = function(models) {
-    User.hasMany(models.Events,{
+  // associates an Admin with unique user
+  Admin.associate = function(models) {
+    Admin.belongsTo(models.User,{
       foreignKey:{
         allowNull: false
       }
     })
-    
   }
-  // associate a user with an admin
-  User.associate = function(models) {
-    User.belongsTo(models.Admin,{
-      foreignKey: {
+
+  //associates an Admin with many events
+  Admin.associate = function(models) {
+    Admin.hasMany(models.Events,{
+      foreignKey:{
         allowNull: false
       }
     })
   }
-  
-
-  return User;
+  return Admin;
 };
