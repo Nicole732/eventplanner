@@ -16,7 +16,12 @@ $(document).ready(function() {
       interest: interestInput.val().trim()
     };
 
-    if (!userData.email || !userData.password || !userData.name ||!userData.interest) {
+    if (
+      !userData.email ||
+      !userData.password ||
+      !userData.name ||
+      !userData.interest
+    ) {
       return;
     }
     // If we have an email and password, run the signUpUser function
