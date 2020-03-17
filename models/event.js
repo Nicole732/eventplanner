@@ -1,59 +1,67 @@
-const Sequelize = require("sequilize");
+const Sequelize = require("sequelize");
 
-module.exports = function(sequelize, DataTypes){
-    const Events = sequelize.define("Events", {
-        title: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            unique: true
-        },
-        //suggest that category be canceled 
-        //correspond to user's interest
-        category: { 
-            type: DataTypes.STRING
-        },
-        eventdate: {
-            type: DataTypes.DATETIME,
-            defaultValue: Sequelize.NOW
-            //defines current date and time as default value
-        },
-        eventlink: {
-            type: DataTypes.STRING,
-            validate: {
-                isUrl: true, 
-                msg: "Please enter a valid URL"
-            }
-        },
-        description: {
-            type: DataTypes.TEXT
-        },
-        location: {
-            type: DataTypes.STRING,
-            notEmpty: true,
-            allowNull: false
-            //a location is required and cannot be null
-        },
-        uploader: {
-            type: DataTypes.STRING,
-            notEmpty: true,
-            allowNull: false
-        },
-        adminApproval: {
-            type: Boolean,
-            defaultValue: false
-        }
-        
-    });
-
-    // asscoiates one event with a unique User. event can't be without a user
-    Events.associate = function(models){
-
-        Events.belongsTo(models.User,{
-            foreignKey:{
-                allowNull: false
-
-            }
-        })
+module.exports = function(sequelize, DataTypes) {
+  const Events = sequelize.define("Events", {
+    title: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true
+    },
+    //suggest that category be canceled
+    //correspond to user's interest
+    category: {
+      type: DataTypes.STRING
+    },
+    eventDate: {
+      type: DataTypes.DATE,
+      defaultValue: Sequelize.NOW
+      //defines current date and time as default value
+    },
+    eventLink: {
+      type: DataTypes.STRING,
+      validate: {
+        isUrl: true,
+        msg: "Please enter a valid URL"
+      }
+    },
+    description: {
+      type: DataTypes.TEXT
+    },
+    location: {
+      type: DataTypes.STRING,
+      notEmpty: true,
+      allowNull: false
+      //a location is required and cannot be null
+    },
+    uploader: {
+      type: DataTypes.STRING,
+      notEmpty: true,
+      allowNull: false
+    },
+    adminApproval: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false
     }
-    return Events;
-}
+    // createdAt: {
+    //   type: DataTypes.DATE,
+    //   defaultValue: Sequelize.NOW
+    //   //defines current date and time as default value
+    // },
+    // updatedAt: {
+    //   type: DataTypes.DATE,
+    //   defaultValue: Sequelize.NOW
+    //   //defines current date and time as default value
+    // }
+  });
+
+  // asscoiates one event with a unique User.
+  //event can't be without a user: foreign key
+  Events.associate = function(models) {
+    Events.belongsTo(models.User, {
+      foreignKey: {
+        allowNull: false
+      }
+    });
+  };
+  return Events;
+};
