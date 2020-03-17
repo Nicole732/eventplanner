@@ -73,13 +73,13 @@ module.exports = function(sequelize, DataTypes) {
 
   // associate a user with an admin
   // needs review when adding admin functionality
-  User.associate = function(models) {
-    User.belongsTo(models.Admin, {
-      foreignKey: {
-        allowNull: false
-      }
-    });
-  };
+  // User.associate = function(models) {
+  //   User.belongsTo(models.Admin, {
+  //     foreignKey: {
+  //       allowNull: false
+  //     }
+  //   });
+  // };
 
   return User;
 };
