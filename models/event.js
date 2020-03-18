@@ -20,8 +20,18 @@ module.exports = function(sequelize, DataTypes) {
     eventLink: {
       type: DataTypes.STRING,
       validate: {
-        isUrl: true,
-        msg: "Please enter a valid URL"
+        isUrl: {
+          msg: "Please enter a valid URL with http protocol",
+          args: [
+            {
+              protocols: ["https"],
+              // eslint-disable-next-line camelcase
+              require_valid_protocol: true,
+              // eslint-disable-next-line camelcase
+              require_protocol: true
+            }
+          ]
+        }
       }
     },
     description: {
@@ -32,16 +42,16 @@ module.exports = function(sequelize, DataTypes) {
       notEmpty: true,
       allowNull: false
       //a location is required and cannot be null
-    },
-    uploader: {
-      type: DataTypes.STRING,
-      notEmpty: true,
-      allowNull: false
-    },
-    adminApproval: {
-      type: DataTypes.BOOLEAN,
-      defaultValue: false
     }
+    // uploader: {
+    //   type: DataTypes.STRING,
+    //   notEmpty: true,
+    //   allowNull: false
+    // }
+    // adminApproval: {
+    //   type: DataTypes.BOOLEAN,
+    //   defaultValue: false
+    // }
     // createdAt: {
     //   type: DataTypes.DATE,
     //   defaultValue: Sequelize.NOW
