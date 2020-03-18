@@ -57,4 +57,62 @@ module.exports = function(app) {
       });
     }
   });
+  //Events related routes
+  //find all the Events and res in json
+  app.get("/api/events", function(req, res) {
+    db.Events.findAll({})
+      .then(dbEvents => res.json(dbEvents))
+      .catch(err => res.status(500).json(err));
+  });
+
+  // //find a Events with id and res in json
+  // app.get("/api/events/:id", function(req, res) {
+  //   db.Events.findOne({
+  //     where: {
+  //       id: req.params.id
+  //     }
+  //   })
+  //     .then(dbEvents => res.json(dbEvents))
+  //     .catch(err => res.status(500).json(err));
+  // });
+  // //find all Events of a particular catagory
+  // app.get("/api/events/category/:category", function(req, res) {
+  //   db.Events.findAll({
+  //     where: {
+  //       category: req.params.category
+  //     }
+  //   })
+  //     .then(dbEvents => res.json(dbEvents))
+  //     .catch(err => res.status(500).json(err));
+  // });
+  //create an Events
+  app.post("/api/events", function(req, res) {
+    console.log(req.body);
+    db.Events.create(req.body)
+      .then(dbEvents => res.json(dbEvents))
+      .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+      });
+  });
+  // //delete a Events
+  // app.delete("/api/events/:id", function(req, res) {
+  //   db.Events.destroy({
+  //     where: {
+  //       id: req.params.id
+  //     }
+  //   })
+  //     .then(dbEvents => res.json(dbEvents))
+  //     .catch(err => res.status(500).json(err));
+  // });
+  // //update a Events
+  // app.put("/api/events/:id", function(req, res) {
+  //   db.Events.update({
+  //     where: {
+  //       id: req.body.id
+  //     }
+  //   })
+  //     .then(dbEvents => res.json(dbEvents))
+  //     .catch(err => res.status(500).json(err));
+  // });
 };
