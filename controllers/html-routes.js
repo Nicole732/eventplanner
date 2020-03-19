@@ -56,7 +56,7 @@ module.exports = function(app) {
     });
   });
 
-  // to delete an event
+  // to delete an event??
   app.delete("/events/:id", function(req, res) {
     //req.body.id vs req.params.id??
     db.Events.destroy({
@@ -64,6 +64,8 @@ module.exports = function(app) {
         id: req.body.id
       }
     }).then(
+      //??
+      //res.render??
       //redirect here
       res.redirect("/events")
     );

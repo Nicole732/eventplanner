@@ -46,13 +46,17 @@ require("./controllers/html-routes.js")(app);
 require("./controllers/api-routes.js")(app);
 
 // Syncing our database and logging a message to the user upon success
-//db.sequelize.sync({force: true}) drops and recreates the tables
-db.sequelize.sync().then(function() {
-  app.listen(PORT, function() {
-    console.log(
-      "==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.",
-      PORT,
-      PORT
-    );
+//run server with {force: true}) to drop and recreate the tables when models are edited
+db.sequelize
+  .sync
+  //{force: true}
+  ()
+  .then(function() {
+    app.listen(PORT, function() {
+      console.log(
+        "==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.",
+        PORT,
+        PORT
+      );
+    });
   });
-});
