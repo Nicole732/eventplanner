@@ -1,186 +1,235 @@
-
 body {
-    background: #efefef;
-    color: #535461;
-    text-align: center;
-    max-width: 100%;
-    overflow-x: hidden;
-    padding: 0;
-    margin: 0;
+  font-family: 'Heebo', sans-serif;
+  background: #efefef;
+  color: #535461;
+  text-align: center;
+  max-width: 100%;
+  overflow-x: hidden;
+  padding: 0;
+  margin: 0;
+}
+
+#person {
+  animation: person 2s ease-in-out infinite alternate;
+  transform-origin: bottom;
+}
+
+@keyframes person {
+  from {
+    transform: rotateX(0deg);
   }
-  
-  #person {
-    animation: person 2s ease-in-out infinite alternate;
-    transform-origin: bottom;
+  to {
+    transform: rotateX(20deg);
   }
-  
-  @keyframes person {
-    from {
-      transform: rotateX(0deg);
-    }
-    to {
-      transform: rotateX(20deg);
-    }
+}
+
+#net {
+  animation: net 1s ease-in-out infinite alternate;
+  transform-origin: bottom;
+}
+
+@keyframes net {
+  from {
+    transform: rotateX(0deg);
   }
-  
-  #net {
-    animation: net 1s ease-in-out infinite alternate;
-    transform-origin: bottom;
+  to {
+    transform: rotateX(10deg);
   }
-  
-  @keyframes net {
-    from {
-      transform: rotateX(0deg);
-    }
-    to {
-      transform: rotateX(10deg);
-    }
-  }
-  
-  .item-a {
-    grid-area: logo;
-    font-size: 48px;
-    justify-self: center;
-  }
-  .item-b {
-    grid-area: menu;
-    justify-self: center;
-  }
-  .containerA {
-    display: grid;
-    grid-template-columns: 50%, auto, 50%;
-    grid-template-rows: 50px;
-    grid-template-areas: "logo . menu";
-  }
-  
-  .item-c {
-    margin-top: 50px;
-    margin-left: -18px;
-    grid-area: tennisSvg;
-    justify-self: center;
-  }
-  .item-d {
-    grid-area: btn1;
-    justify-self: center;
-  }
-  .item-e {
-    grid-area: btn2;
-    justify-self: center;
-  }
-  
-  .containerB {
-    display: grid;
-    grid-template-columns: auto;
-    grid-template-rows: auto, auto, auto;
-    grid-template-areas:
-      "tennisSvg"
-      "btn1"
-      "btn2";
-  }
-  /* .item-f {
-    grid-area: footer;
-  } */
-  
-  /* styles */
-  .logo {
-    text-align: left;
-    margin: 0;
-    padding: 0;
-    font-size: 36px;
-  }
-  
-  #toggle {
-    display: none;
-  }
-  
-  .hamburger {
-    position: absolute;
-    right: 6%;
-    width: 2em;
-    height: 45px;
-    z-index: 5;
-  }
-  
-  .hamburger div {
-    position: relative;
-    width: 3em;
-    height: 7px;
-    border-radius: 3px;
-    background-color: #535461;
-    margin-top: 8px;
-    transition: all 0.3s ease-in-out;
-  }
-  
-  .nav {
-    display: inline-block;
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    background-color: #6c63ff;
-    top: -100%;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    overflow: hidden;
-    transition: all 0.3s ease-in-out;
-    transform: scale(0);
-  }
-  .nav-wrapper {
-    position: relative;
-    overflow: hidden;
-    overflow-y: auto;
-    height: 100%;
-  }
-  nav {
-    text-align: left;
-    margin-left: 10%;
-  }
-  nav a {
-    position: relative;
-    text-decoration: none;
-    color: #efefef;
-    font-size: 2em;
-    display: inline-block;
-    margin-top: 0.5em;
-    transition: color 0.2s ease-in-out;
-    letter-spacing: 1px;
-  }
-  nav a:before {
-    content: "";
-    height: 0;
-    position: absolute;
-    width: 0.25em;
-    background-color: white;
-    left: -0.5em;
-    transition: all 0.2s ease-in-out;
-  }
-  nav a:hover {
-    color: white;
-  }
-  nav a:hover:before {
-    height: 100%;
-  }
-  
-  /**
-  Animations
-  **/
-  #toggle:checked + .hamburger .top-bun {
-    background-color: #efefef;
-    transform: rotate(-45deg);
-    margin-top: 25px;
-  }
-  #toggle:checked + .hamburger .bottom-bun {
-    background-color: #efefef;
-    opacity: 0;
-    transform: rotate(45deg);
-  }
-  #toggle:checked + .hamburger .meat {
-    background-color: #efefef;
-    transform: rotate(45deg);
-    margin-top: -7px;
-  }
-  
-  #toggle:checked + .hamburger + .nav {
-    top: 0;
-    transform: scale(1);
-  }
+}
+
+.item-a {
+  font-family: 'Gravitas One', cursive;
+  color: #f55f44;
+  margin-top: 23px;
+  grid-area: logo;
+  font-size: 28px;
+  justify-self: center;
+}
+
+.item-b {
+  grid-area: menu;
+  justify-self: center;
+}
+
+.containerA {
+  display: grid;
+  grid-template-columns: 50%, auto, 50%;
+  grid-template-rows: 100%;
+  grid-template-areas: "logo . menu";
+}
+
+.item-c {
+  margin-top: 40px;
+  margin-left: -24px;
+  grid-area: tennisSvg;
+  justify-self: center;
+}
+
+.item-d {
+  margin-top: 40px;
+  grid-area: btn1;
+  justify-self: center;
+}
+
+.item-e {
+  margin-top: 20px;
+  grid-area: btn2;
+  justify-self: center;
+}
+
+.containerB {
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: auto, auto, auto;
+  grid-template-areas:
+    "tennisSvg"
+    "btn1"
+    "btn2";
+}
+/* .item-f {
+  grid-area: footer;
+} */
+
+/* styles */
+/* .logo {
+  text-align: left;
+  margin: 0;
+  padding: 0;
+  font-size: 36px;
+} */
+
+#toggle {
+  display: none;
+}
+
+.hamburger {
+  margin-right: 15px;
+  margin-top: 18px;
+  position: absolute;
+  right: 6%;
+  width: 2em;
+  height: 45px;
+  z-index: 5;
+}
+
+.hamburger div {
+  position: relative;
+  width: 3em;
+  height: 7px;
+  border-radius: 3px;
+  background-color: #535461;
+  margin-top: 8px;
+  transition: all 0.3s ease-in-out;
+}
+
+.nav {
+  display: inline-block;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: #6c63ff;
+  top: -100%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+  transform: scale(0);
+}
+.nav-wrapper {
+  position: relative;
+  overflow: hidden;
+  overflow-y: auto;
+  height: 100%;
+}
+nav {
+  text-align: left;
+  margin-left: 10%;
+}
+nav a {
+  position: relative;
+  text-decoration: none;
+  color: #efefef;
+  font-size: 2em;
+  display: inline-block;
+  margin-top: 0.5em;
+  transition: color 0.2s ease-in-out;
+  letter-spacing: 1px;
+}
+nav a:before {
+  content: "";
+  height: 0;
+  position: absolute;
+  width: 0.25em;
+  background-color: white;
+  left: -0.5em;
+  transition: all 0.2s ease-in-out;
+}
+nav a:hover {
+  color: white;
+}
+nav a:hover:before {
+  height: 100%;
+}
+
+/**
+Animations
+**/
+#toggle:checked + .hamburger .top-bun {
+  background-color: #efefef;
+  transform: rotate(-45deg);
+  margin-top: 25px;
+}
+#toggle:checked + .hamburger .bottom-bun {
+  background-color: #efefef;
+  opacity: 0;
+  transform: rotate(45deg);
+}
+#toggle:checked + .hamburger .meat {
+  background-color: #efefef;
+  transform: rotate(45deg);
+  margin-top: -7px;
+}
+
+#toggle:checked + .hamburger + .nav {
+  top: 0;
+  transform: scale(1);
+}
+
+.button {
+  background-color: #efefef;
+  border: none;
+  color: #535461;
+  padding: 5px 80px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 24px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 30px;
+  box-shadow: -2px -2px 5px rgba(255, 255, 255, 1),
+    3px 3px 5px rgba(0, 0, 0, 0.1);
+  /* box-shadow: 0 5px 6px 0 #9fa0a87c; */
+  transition: 100ms ease-in-out;
+}
+
+.button:hover {
+  /* background-color: #3AD29F;
+  text-decoration: none;
+  color: #ffffff;
+  transform: scale(1.05);
+  box-shadow: 0 6px 7px 0 #95969e7c; */
+  color: #3AD29F;
+  text-decoration: none;
+  box-shadow: inset -2px -2px 5px rgba(255, 255, 255, 1),
+    inset 3px 3px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* .cursor {
+  width: 3rem;
+  height: 3rem;
+  border: 2px solid black;
+  border-radius: 50%;
+  position: absolute;
+} */
