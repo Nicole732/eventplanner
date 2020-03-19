@@ -49,12 +49,29 @@ $(document).ready(function() {
       .then(
         console.log(newEvent);
         //retrieve events
-        location.reload("/events"))
-      .catch(handleLoginErr);
+        location.reload("/events")
+        ).catch(handleLoginErr);
   }
 
   function handleLoginErr(err) {
     $("#alert .msg").text(err.responseJSON);
     $("#alert").fadeIn(500);
   }
+  // login to delete an event
+
+  //delete an event
+
+  $(".delevent").on("click", function(event) {
+    var id = $(this).data("id");
+
+    // Send the DELETE request.
+    $.delete("/api/events/" + id).then(
+      () => {
+        console.log("deleted id ", id);
+        // Reload the page to get the updated list
+        location.reload();
+      }
+    );
+  });
+
 });

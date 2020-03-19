@@ -66,26 +66,26 @@ module.exports = function(app) {
   });
 
   // //find a Events with id and res in json
-  // app.get("/api/events/:id", function(req, res) {
-  //   db.Events.findOne({
-  //     where: {
-  //       id: req.params.id
-  //     }
-  //   })
-  //     .then(dbEvents => res.json(dbEvents))
-  //     .catch(err => res.status(500).json(err));
-  // });
+  app.get("/api/events/:id", function(req, res) {
+    db.Events.findOne({
+      where: {
+        id: req.params.id
+      }
+    })
+      .then(dbEvents => res.json(dbEvents))
+      .catch(err => res.status(500).json(err));
+  });
   
   // //find all Events of a particular catagory
-  // app.get("/api/events/category/:category", function(req, res) {
-  //   db.Events.findAll({
-  //     where: {
-  //       category: req.params.category
-  //     }
-  //   })
-  //     .then(dbEvents => res.json(dbEvents))
-  //     .catch(err => res.status(500).json(err));
-  // });
+  app.get("/api/events/category/:category", function(req, res) {
+    db.Events.findAll({
+      where: {
+        category: req.params.category
+      }
+    })
+      .then(dbEvents => res.json(dbEvents))
+      .catch(err => res.status(500).json(err));
+  });
   //create an Events
   app.post("/api/events", function(req, res) {
     console.log(req.body);
