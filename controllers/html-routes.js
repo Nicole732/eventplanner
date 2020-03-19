@@ -69,7 +69,7 @@ module.exports = function(app) {
       // });
       //res.render(`events/category/${category}`, { events: dbEvents });
       //res.render("sports", { events: dbEvents });
-      res.render("events", { events: dbEvents });
+      res.render("members", { events: dbEvents });
     });
   });
   // to delete an event??
