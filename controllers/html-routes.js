@@ -11,8 +11,8 @@ module.exports = function(app) {
     if (req.user) {
       res.redirect("/members");
     }
-    res.sendFile(path.join(__dirname, "../public/signup.html"));
-    //res.sendFile(path.join(__dirname, "../public/home.html"));
+    //res.sendFile(path.join(__dirname, "../public/signup.html"));
+    res.sendFile(path.join(__dirname, "../public/home.html"));
   });
 
   app.get("/login", function(req, res) {
@@ -22,12 +22,28 @@ module.exports = function(app) {
     }
     res.sendFile(path.join(__dirname, "../public/login.html"));
   });
+  app.get("/signup", function(req, res) {
+    // If the user already has an account send them to the members page
+    if (req.user) {
+      res.redirect("/members");
+    }
+    res.sendFile(path.join(__dirname, "../public/signup.html"));
+  });
 
   // Here we've add our isAuthenticated middleware to this route.
   // If a user who is not logged in tries to access this route they will be redirected to the signup page
   app.get("/members", isAuthenticated, function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/members.html"));
+    db.Events.findAll().then(dbEvents => {
+      // eslint-disable-next-line no-unused-vars
+      dbEvents.forEach(event => {
+        console.log(event.dataValues);
+      });
+
+      //res.sendFile(path.join(__dirname, "../public/members.html"));
+      res.render("members", { events: dbEvents });
+    });
   });
+
   //or main page
   app.get("/events", function(req, res) {
     db.Events.findAll().then(dbEvents => {
@@ -52,11 +68,13 @@ module.exports = function(app) {
       // dbEvents.forEach(event => {
       //   console.log(event.dataValues)
       // });
+      //res.render(`events/category/${category}`, { events: dbEvents });
+      //res.render("sports", { events: dbEvents });
       res.render("events", { events: dbEvents });
     });
   });
 
-  // to delete an event
+  // to delete an event??
   app.delete("/events/:id", function(req, res) {
     //req.body.id vs req.params.id??
     db.Events.destroy({
@@ -64,6 +82,8 @@ module.exports = function(app) {
         id: req.body.id
       }
     }).then(
+      //??
+      //res.render??
       //redirect here
       res.redirect("/events")
     );
