@@ -1,6 +1,7 @@
 //pending front-end feedback
 $(document).ready(function() {
   //will edit based on event form ids
+  //planevent??
   const eventForm = $("form.eventsignup");
   const eventTitle = $("input#title-input");
   const eventCategory = $("input#category-input");
@@ -48,8 +49,7 @@ $(document).ready(function() {
       .then(
         console.log(newEvent);
         //retrieve events
-        location.reload("/events")
-      )
+        location.reload("/events"))
       .catch(handleLoginErr);
   }
 
@@ -57,7 +57,4 @@ $(document).ready(function() {
     $("#alert .msg").text(err.responseJSON);
     $("#alert").fadeIn(500);
   }
-
-  //handle the button to delete an event
-
 });

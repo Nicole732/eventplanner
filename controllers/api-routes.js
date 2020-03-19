@@ -75,6 +75,7 @@ module.exports = function(app) {
   //     .then(dbEvents => res.json(dbEvents))
   //     .catch(err => res.status(500).json(err));
   // });
+  
   // //find all Events of a particular catagory
   // app.get("/api/events/category/:category", function(req, res) {
   //   db.Events.findAll({
