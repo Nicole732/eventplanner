@@ -44,11 +44,12 @@ a:hover {
   background-color: #efefef;
   border: none;
   color: #535461;
-  padding: 5px 80px;
+  padding: 5px 20px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 24px;
+  font-size: 20px;
+  font-weight: 700;
   margin: 4px 2px;
   cursor: pointer;
   border-radius: 30px;
@@ -64,7 +65,7 @@ a:hover {
     color: #ffffff;
     transform: scale(1.05);
     box-shadow: 0 6px 7px 0 #95969e7c; */
-  color: #3ad29f;
+  color: #3AD29F;
   text-decoration: none;
   box-shadow: inset -2px -2px 5px rgba(255, 255, 255, 1),
     inset 3px 3px 5px rgba(0, 0, 0, 0.1);
@@ -83,4 +84,8 @@ a:hover {
   to {
     transform: rotateZ(360deg);
   }
+}
+
+button {
+  outline: none;
 }
