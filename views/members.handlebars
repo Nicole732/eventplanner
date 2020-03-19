@@ -1,0 +1,54 @@
+{{!-- this page displays members with their events 
+and gives them the option to add new events  --}}
+
+{{!-- need to put this in the format of html used --}}
+{{!-- <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/logout">
+        Logout
+      </a>
+    </div>
+  </div>
+</nav>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <h2>Welcome <span class="member-name"></span></h2>
+      </div>
+    </div>
+  </div> --}}
+{{!-- 
+add a link to add events form--}}
+<button  class="addevent">Add New Event</button>
+||
+<a href="events">View all events</a>
+
+
+{{#each events}}
+<div class="containerB">
+  <div class="item-c">
+
+    <div id="titleLink">
+      <h2>{{dataValues.title}}</h2>
+    </div>
+    <hr>
+    <div id="descriptionT">Description:</div>
+    <div id="descriptionP">{{dataValues.description}}
+    </div>
+    <hr>
+    <div id="date">Date:  {{dataValues.createdAt}}</div>
+    <div id="location">Location:  {{dataValues.location}}</div>
+    <div id="link"><a href="{{dataValues.eventLink}}">Click for More information </a></div>
+    {{!-- to display the name from users table --}}
+    <div id="userUpload">Posted by: {{dataValues.UserId}}</div>
+     <a href="#" class="button">Delete</a> 
+    <br>
+
+  </div>
+</div>
+{{/each}}
+
+
+
+<script type="text/javascript" src="js/eventsclient.js"></script>
