@@ -2,7 +2,13 @@
 
 {{!-- Sports event  --}}
 {{!-- Any title?? --}}
+
+<h1> Sports Events</h1>
+<br>
+<br>
 {{#each events}}
+
+
 <div class="containerB">
   <div class="item-c">
 
@@ -16,7 +22,7 @@
     <hr>
     <div id="date">Date:  {{dataValues.createdAt}}</div>
     <div id="location">Location:  {{dataValues.location}}</div>
-    <div id="link"><a href="{{dataValues.eventLink}}">Click for More information </a></div>
+    <div id="link"><a href="{{dataValues.eventLink}}" target="_blank">Click for More information </a></div>
     {{!-- to display the name from users table --}}
     <div id="userUpload">Posted by: {{dataValues.UserId}}</div>
     {{!-- <a href="#" class="button">Save!</a> --}}
@@ -24,6 +30,7 @@
 
   </div>
 </div>
+
 {{/each}}
 
 {{!-- <script type="text/javascript" src="js/eventsclient.js"></script> --}}

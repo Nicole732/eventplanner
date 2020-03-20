@@ -57,21 +57,54 @@ module.exports = function(app) {
   });
   // to display events per category on events template
   app.get("/events/category/:category", function(req, res) {
-    //console.log(req.params.category);
-    // req.body.category???
     db.Events.findAll({
       where: {
         category: req.params.category
       }
     }).then(dbEvents => {
-      // dbEvents.forEach(event => {
-      //   console.log(event.dataValues)
-      // });
       //res.render(`events/category/${category}`, { events: dbEvents });
       //res.render("sports", { events: dbEvents });
       res.render("members", { events: dbEvents });
     });
   });
+
+  app.get("/sports", function(req, res) {
+    db.Events.findAll({
+      where: {
+        category: "Sports"
+      }
+    }).then(dbEvents => {
+      res.render("sports", { events: dbEvents });
+    });
+  });
+  app.get("/arts", function(req, res) {
+    db.Events.findAll({
+      where: {
+        category: "Arts"
+      }
+    }).then(dbEvents => {
+      res.render("arts", { events: dbEvents });
+    });
+  });
+  app.get("/education", function(req, res) {
+    db.Events.findAll({
+      where: {
+        category: "Education"
+      }
+    }).then(dbEvents => {
+      res.render("Education", { events: dbEvents });
+    });
+  });
+  app.get("/music", function(req, res) {
+    db.Events.findAll({
+      where: {
+        category: "Music"
+      }
+    }).then(dbEvents => {
+      res.render("music", { events: dbEvents });
+    });
+  });
+
   // to delete an event??
   app.delete("/events/:id", function(req, res) {
     //req.body.id vs req.params.id??
