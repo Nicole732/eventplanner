@@ -45,7 +45,7 @@ body {
 .containerB {
   display: grid;
   grid-template-columns: 1fr, 1fr, 1fr;
-  grid-template-rows: 89%;
+  grid-template-rows: 100%;
   grid-template-areas: "emptyOne eventCard emptyTwo";
 }
 
@@ -258,7 +258,8 @@ hr {
   display: inline-block;
   font-size: 20px;
   font-weight: 700;
-  margin: 4px 2px;
+  margin: 12px 2px;
+  margin-bottom: 0px;
   cursor: pointer;
   border-radius: 30px;
   box-shadow: -2px -2px 5px rgba(255, 255, 255, 1),
