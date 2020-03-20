@@ -38,22 +38,24 @@
     </div>
 
     <div class="wrapper">
-        <div class="event-form">
+        <form class="event-form">
             <div class="input-fields">
-                <input type="text" class="input" placeholder="title">
-                <input type="text" class="input" placeholder="link">
-                <input type="text" class="input" placeholder="date">
-                <input type="text" class="input" placeholder="location">
-                <input type="text" class="input" placeholder="category">
+                <input type="text" class="input" id="title-input" placeholder="title">
+                <input type="text" class="input" id="eventlink-input " placeholder="link">
+                <!-- <input type="text" class="input" id="eventdate-input" placeholder="date"> -->
+                <input type="text" class="input" id="location-input" placeholder="location">
+                <input type="text" class="input" id="category-input" placeholder="category">
             </div>
             <div class="msg">
-                <textarea placeholder="Description:"></textarea>
-                <div class="btn">Submit!</a></div>
+                <textarea placeholder="Description:" id="description-input"></textarea>
+                <button type="submit">Submit!</button>
             </div>
-        </div>
+          </form>
     </div>
 
   </div> 
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script type="text/javascript" src="js/eventsclient.js"></script>
   </body>
   </html>
+  
