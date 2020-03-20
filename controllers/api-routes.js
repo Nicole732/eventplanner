@@ -98,15 +98,15 @@ module.exports = function(app) {
       });
   });
   // //delete a Events
-  // app.delete("/api/events/:id", function(req, res) {
-  //   db.Events.destroy({
-  //     where: {
-  //       id: req.params.id
-  //     }
-  //   })
-  //     .then(dbEvents => res.json(dbEvents))
-  //     .catch(err => res.status(500).json(err));
-  // });
+  app.delete("/api/events/:id", function(req, res) {
+    db.Events.destroy({
+      where: {
+        id: req.params.id
+      }
+    })
+      .then(dbEvents => res.json(dbEvents))
+      .catch(err => res.status(500).json(err));
+  });
   // //update a Events
   // app.put("/api/events/:id", function(req, res) {
   //   db.Events.update({
