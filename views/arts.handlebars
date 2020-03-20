@@ -1,7 +1,9 @@
 {{!-- this page displays event for a guest user / not member --}}
 
 {{!-- Arts events  --}}
-{{!-- Any title?? --}}
+<h1> Arts Events</h1>
+<br>
+<br>
 
 {{#each events}}
 <div class="containerB">
@@ -17,7 +19,7 @@
     <hr>
     <div id="date">Date:  {{dataValues.createdAt}}</div>
     <div id="location">Location:  {{dataValues.location}}</div>
-    <div id="link"><a href="{{dataValues.eventLink}}">Click for More information </a></div>
+    <div id="link"><a href="{{dataValues.eventLink}}" target="_blank">Click for More information </a></div>
     {{!-- to display the name from users table --}}
     <div id="userUpload">Posted by: {{dataValues.UserId}}</div>
     {{!-- <a href="#" class="button">Save!</a> --}}
