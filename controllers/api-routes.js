@@ -89,6 +89,7 @@ module.exports = function(app) {
   //create an Events
   app.post("/api/events", function(req, res) {
     console.log(req.body);
+    req.body.UserId = req.user.id;
     db.Events.create(req.body)
       .then(dbEvents => res.json(dbEvents))
       .catch(err => {
