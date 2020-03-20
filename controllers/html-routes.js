@@ -106,17 +106,17 @@ module.exports = function(app) {
   });
 
   // to delete an event??
-  app.delete("/events/:id", function(req, res) {
-    //req.body.id vs req.params.id??
-    db.Events.destroy({
-      where: {
-        id: req.body.id
-      }
-    }).then(
-      //??
-      //res.render??
-      //redirect here
-      res.redirect("/events")
-    );
-  });
+  // app.delete("/events/:id", function(req, res) {
+  //   //req.body.id vs req.params.id??
+  //   db.Events.destroy({
+  //     where: {
+  //       id: req.params.id
+  //     }
+  //   }).then(
+  //     //??
+  //     //res.render??
+  //     //redirect here
+  //     res.redirect("/members")
+  //   );
+  // });
 };
