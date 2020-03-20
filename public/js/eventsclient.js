@@ -6,24 +6,25 @@ $(document).ready(function() {
   const eventTitle = $("input#title-input");
   const eventCategory = $("input#category-input");
   //const eventDate = $("input#eventdate-input");
-  const eventLink = $("input#eventlink-input");
+  const eventLink = $("#eventlink-input");
   const eventDescription = $("input#description-input");
   const eventLocation = $("input#location-input");
   //not sure we need it with userId through the association
   //const eventUploader = $("input#uploader-input");
 
   //handle the button to submit an event
-  eventForm.on("submit", function(event){
+  eventForm.on("submit", function(event) {
     event.preventDefault();
     //store  information received into a new event object
     //userId??
+    console.log($("#eventlink-input").val());
     var newEvent = {
       title: eventTitle.val().trim(),
       category: eventCategory.val().trim(),
       //eventDate: eventDate.val().trim(),
-      eventLink: eventLink.val().trim(),
-      description: eventDescription.val().trim(),
-      location: eventLocation.val().trim(),
+      eventLink: eventLink.val(),
+      description: eventDescription.val(),
+      location: eventLocation.val().trim()
       //uploader: eventUploader.val().trim()
     };
     //validate newEvent attributes - title,location and uploader - to not null as per the model specifications
@@ -46,11 +47,12 @@ $(document).ready(function() {
 
   function addNewEvent(newEvent) {
     $.post("/api/events", newEvent)
-      .then(
+      .then(() => {
         console.log(newEvent);
         //retrieve events
         location.reload("/events");
-        ).catch(handleLoginErr);
+      })
+      .catch(handleLoginErr);
   }
 
   function handleLoginErr(err) {
@@ -73,5 +75,4 @@ $(document).ready(function() {
   //     }
   //   );
   // });
-
 });
